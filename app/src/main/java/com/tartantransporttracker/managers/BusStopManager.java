@@ -1,6 +1,9 @@
 package com.tartantransporttracker.managers;
 
+import android.util.Log;
+
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.models.BusStop;
 import com.tartantransporttracker.repository.BusRepository;
 import com.tartantransporttracker.repository.UserRepository;
@@ -32,7 +35,7 @@ public class BusStopManager {
         busRepository.createBusStop(busStop);
     }
 
-    public List<BusStop> findAllBusStops(){
+    public Task<QuerySnapshot> findAllBusStops(){
         return busRepository.findAll();
     }
 

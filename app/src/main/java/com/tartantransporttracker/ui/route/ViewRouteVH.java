@@ -9,15 +9,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tartantransporttracker.R;
+import com.tartantransporttracker.managers.BusStopManager;
 import com.tartantransporttracker.managers.RouteManager;
 import com.tartantransporttracker.models.Route;
 
 class ViewRouteVH extends RecyclerView.ViewHolder {
-
-    TextView routeName;
-
+    private BusStopManager busStopManager = BusStopManager.getInstance();
     public ViewRouteAdapter viewRouteAdapter;
     private RouteManager routeManager = RouteManager.getInstance();
+    TextView routeName;
 
     public ViewRouteVH(@NonNull View itemView) {
         super(itemView);

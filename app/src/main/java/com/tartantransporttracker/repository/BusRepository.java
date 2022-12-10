@@ -63,24 +63,24 @@ public class BusRepository {
     }
 
     // get all data from firestore
-    public List<BusStop> findAll(){
-        List<BusStop> busStops = new ArrayList<>();
-        this.getBusStopsCollection().get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(!queryDocumentSnapshots.isEmpty()){
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                            for(DocumentSnapshot doc:list){
-                                BusStop route = doc.toObject(BusStop.class);
-                                busStops.add(route);
-                            }
-                        }else{
-                            Log.w(TAG,"No data found in the database");
-                        }
-                    }
-                });
-        return busStops;
+    public Task<QuerySnapshot> findAll(){
+//        List<BusStop> busStops = new ArrayList<>();
+//        this.getBusStopsCollection().get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if(!queryDocumentSnapshots.isEmpty()){
+//                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+//                            for(DocumentSnapshot doc:list){
+//                                BusStop route = doc.toObject(BusStop.class);
+//                                busStops.add(route);
+//                            }
+//                        }else{
+//                            Log.w(TAG,"No data found in the database");
+//                        }
+//                    }
+//                });
+        return this.getBusStopsCollection().get();
     }
 
 

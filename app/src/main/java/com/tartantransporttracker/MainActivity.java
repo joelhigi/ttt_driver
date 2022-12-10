@@ -1,15 +1,9 @@
 package com.tartantransporttracker;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -17,24 +11,21 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 
 import com.tartantransporttracker.managers.RouteManager;
 import com.tartantransporttracker.models.Route;
-import com.tartantransporttracker.ui.route.AdminViewRoute;
+import com.tartantransporttracker.ui.busStop.BusStopView;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.tartantransporttracker.databinding.ActivityMainBinding;
 import com.tartantransporttracker.managers.UserManager;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding>  {
@@ -177,6 +168,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding>  {
     private void startMapActivity(){
         Intent intent = new Intent(this,MapActivity.class);
         startActivity(intent);
+//        Intent intent1 = new Intent(this, BusStopView.class);
+//        startActivity(intent1);
     }
 
 //    private void updateLoginButton(){
