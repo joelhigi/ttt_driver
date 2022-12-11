@@ -4,11 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MapActivity extends AppCompatActivity {
+import com.tartantransporttracker.databinding.ActivityMapBinding;
 
+public class MapActivity extends DrawerBaseActivity {
+
+    ActivityMapBinding activityMapBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        activityMapBinding = activityMapBinding.inflate(getLayoutInflater());
+        setContentView(activityMapBinding.getRoot());
+        nameActivityTitle("map");
     }
 }

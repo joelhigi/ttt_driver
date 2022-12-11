@@ -35,7 +35,7 @@ public abstract class BaseActivity<T extends ViewBinding> extends AppCompatActiv
     public void onCreate(@Nullable Bundle savedInstance){
         super.onCreate(savedInstance);
         initBinding();
-        drawerLayout = findViewById(R.id.drawLayout);
+//        drawerLayout = findViewById(R.id.drawLayout);
 //        navigationView = findViewById(R.id.navView);
 //        View hView = navigationView.getHeaderView(0);
     }

@@ -10,146 +10,167 @@
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <View
-        android:id="@+id/dashboardTopView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/cmu" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/dashboardTopCard"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/white"
-        android:minWidth="30dp"
-        android:minHeight="10dp"
-        app:cardBackgroundColor="@color/cardview_light_background"
-        app:cardCornerRadius="30dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="30dp"
-                    android:gravity="center">
-
-                    <LinearLayout
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/busStopName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bus stop"
-                            android:textColor="@color/black"
-                            android:textSize="18dp" />
-
-                        <TextView
-                            android:id="@+id/busStopNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingTop="20dp"
-                            android:text="0"
-                            android:textSize="30dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Routes"
-                            android:textColor="@color/black"
-                            android:textSize="18dp" />
-
-                        <TextView
-                            android:id="@+id/routesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingTop="20dp"
-                            android:text="0"
-                            android:textSize="30dp" />
-                    </LinearLayout>
-
-                </TableRow>
-            </TableLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginRight="0dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:padding="16.00dp"
-        android:scrollbars="none"
-        app:cardCornerRadius="30dp">
+        android:orientation="vertical">
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/listOfRoute"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/white"-->
-<!--            android:orientation="vertical">-->
-
-<!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-<!--        </LinearLayout>-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listOfRoute"
+        <View
+            android:id="@+id/dashboardTopView"
             android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/cmu" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:text="TTL"
+            android:textColor="@color/white"
+            android:textSize="18pt" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton"
+            android:layout_width="53dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="@color/cmu"
+            android:textColor="@color/black"
+            app:icon="@drawable/icons_menu_rounded"
+            app:layout_anchor="@+id/materialButton"
+            app:layout_anchorGravity="end|center"
+            app:srcCompat="@android:drawable/ic_menu_view" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dashboardTopCard"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/white"
-            android:orientation="vertical"/>
-    </ScrollView>
+            android:minWidth="30dp"
+            android:minHeight="10dp"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardCornerRadius="30dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_input_add" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bus"
+                                android:textColor="@color/black"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/busStopNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="20dp"
+                                android:text="4"
+                                android:textSize="30dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Routes"
+                                android:textColor="@color/black"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/routesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="20dp"
+                                android:text="5"
+                                android:textSize="30dp" />
+                        </LinearLayout>
+
+                    </TableRow>
+                </TableLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginRight="0dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:padding="16.00dp"
+            android:scrollbars="none"
+            app:cardCornerRadius="30dp">
+
+            <!--        <LinearLayout-->
+            <!--            android:id="@+id/listOfRoute"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:background="@color/white"-->
+            <!--            android:orientation="vertical">-->
+
+            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
+
+            <!--        </LinearLayout>-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listOfRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"/>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginBottom="16dp"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_width="wrap_content"

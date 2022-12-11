@@ -11,7 +11,6 @@ public class Route {
 
     private List<User> students;
 
-
     public Route() {
     }
 
@@ -42,5 +41,10 @@ public class Route {
 
     public void setStudents(List<User> _users) {
         students = _users;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
