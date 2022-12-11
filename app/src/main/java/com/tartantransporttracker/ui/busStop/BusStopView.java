@@ -1,8 +1,10 @@
 package com.tartantransporttracker.ui.busStop;
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,11 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.R;
 import com.tartantransporttracker.managers.BusStopManager;
 import com.tartantransporttracker.models.BusStop;
+import com.tartantransporttracker.ui.route.CreateBusStopActivity;
+import com.tartantransporttracker.ui.route.CreateRouteActivity;
 import com.tartantransporttracker.ui.route.ViewRouteAdapter;
 
 import java.util.ArrayList;
@@ -24,6 +29,7 @@ import java.util.List;
 public class BusStopView extends AppCompatActivity {
     private BusStopManager busStopManager = BusStopManager.getInstance();
     TextView busStopNum;
+    FloatingActionButton busStopBtn;
     List<BusStop> bStops = new ArrayList<>();
 
     @Override
@@ -31,10 +37,15 @@ public class BusStopView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_stop);
         busStopNum = findViewById(R.id.numberOfBusStops);
+        busStopBtn = findViewById(R.id.busStopBtn);
         if(!populateBusStopList())
         {
             Toast.makeText(this, "No Bus STOP found", Toast.LENGTH_LONG);
         }
+        busStopBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CreateBusStopActivity.class);
+            startActivity(intent);
+        });
     }
 
     public boolean populateBusStopList() {

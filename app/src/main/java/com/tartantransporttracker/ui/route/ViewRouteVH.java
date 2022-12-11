@@ -1,7 +1,9 @@
 package com.tartantransporttracker.ui.route;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ class ViewRouteVH extends RecyclerView.ViewHolder {
     private RouteManager routeManager = RouteManager.getInstance();
     TextView routeName;
     TextView fromVenue;
+    Button btnUpdateRoute;
 
     public ViewRouteVH(@NonNull View itemView) {
         super(itemView);
@@ -36,6 +39,20 @@ class ViewRouteVH extends RecyclerView.ViewHolder {
                 }
             }
             confirmRouteDeletion(itemView, thisRoute.getId());
+        });
+        itemView.findViewById(R.id.updateRouteItemBtn).setOnClickListener(view -> {
+            Route thisRoute = null;
+            Intent intent = new Intent(itemView.getContext(), UpdateRouteActivity.class);
+            for(Route route : viewRouteAdapter.routes)
+            {
+                if( route.getName().equals(routeName.getText().toString()))
+                {
+                    intent.putExtra("id", route.getId());
+                    itemView.getContext().startActivity(intent);
+                }
+            }
+
+
         });
         fromVenue.setOnClickListener(view -> {
             AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());

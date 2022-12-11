@@ -23,6 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.DrawerBaseActivity;
 import com.tartantransporttracker.R;
 import com.tartantransporttracker.databinding.ActivityCreateBusStopBinding;
+import com.tartantransporttracker.R;
 import com.tartantransporttracker.managers.BusStopManager;
 import com.tartantransporttracker.managers.RouteManager;
 import com.tartantransporttracker.models.BusStop;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class CreateBusStopActivity extends DrawerBaseActivity {
+public class CreateBusStopActivity  extends DrawerBaseActivity {
 
     private ArrayList<Route> items;
     private Spinner spinner;
@@ -42,14 +43,11 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
     private BusStopManager busStopManager;
     private RouteManager routeManager;
     private Route selectedRoute = new Route();
-    ActivityCreateBusStopBinding activityCreateBusStopBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityCreateBusStopBinding = activityCreateBusStopBinding.inflate(getLayoutInflater());
-        setContentView(activityCreateBusStopBinding.getRoot());
-        nameActivityTitle("Create Bus Stop");
+        setContentView(R.layout.activity_create_bus_stop);
 
         busStopManager = new BusStopManager();
         routeManager = new RouteManager();

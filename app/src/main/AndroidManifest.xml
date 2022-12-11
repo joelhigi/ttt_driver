@@ -13,14 +13,7 @@
         android:theme="@style/Theme.TartanTransportTracker"
         tools:targetApi="31">
         <activity
-            android:name=".ui.busStop.BusStopView"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".UpdateRouteActivity"
+            android:name=".ui.route.UpdateRouteActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -28,6 +21,13 @@
         </activity>
         <activity
             android:name=".ui.route.CreateBusStopActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.busStop.BusStopView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -33,13 +33,10 @@ public class CreateRouteActivity extends DrawerBaseActivity {
     EditText routeName;
     RouteManager routeManager;
 
-    ActivityCreateRouteBinding activityCreateRouteBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityCreateRouteBinding = activityCreateRouteBinding.inflate(getLayoutInflater());
-        setContentView(activityCreateRouteBinding.getRoot());
-        nameActivityTitle("Create Route");
+        setContentView(R.layout.activity_create_route);
 
         routeManager = new RouteManager();
 
