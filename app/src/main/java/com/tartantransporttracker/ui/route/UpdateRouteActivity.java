@@ -27,6 +27,7 @@ public class UpdateRouteActivity extends AppCompatActivity {
     private Button updateBtn;
     private EditText edtName;
     private RouteManager routeManager;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,24 +38,30 @@ public class UpdateRouteActivity extends AppCompatActivity {
         edtName = findViewById(R.id.route_name);
         routeManager = new RouteManager();
 
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = edtName.getText().toString();
+                Route route = findRoute(id);
+                if (route != null) {
+                    Boolean routeExists = routeExists(name);
+                    if (!routeExists) {
+                        routeManager.createRoute(route);
 
-                Boolean routeExists = routeExists(name);
-                if (!routeExists) {
-                    Route route = new Route(name);
-                    routeManager.createRoute(route);
+                        edtName.setText("");
+                        edtName.clearFocus();
 
-                    edtName.setText("");
-                    edtName.clearFocus();
-
-                    Toast.makeText(getApplicationContext(), "Route created", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), AdminViewRoute.class);
-                    startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Route Updated", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), AdminViewRoute.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Route exists!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
-
+                    Toast.makeText(getApplicationContext(), "Route not found", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -92,5 +99,20 @@ public class UpdateRouteActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private Route findRoute(String id)
+    {
+        List<Route> routes = this.getAvailableRoutes();
+        Iterator<Route> iterator = routes.iterator();
+        if (iterator.hasNext())
+        {
+            if (iterator.next().getId().equalsIgnoreCase(id))
+            {
+                return iterator.next();
+            }
+
+        }
+        return null;
     }
 }
