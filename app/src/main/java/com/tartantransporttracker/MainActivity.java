@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 
 import com.tartantransporttracker.managers.RouteManager;
+import com.tartantransporttracker.models.BusStop;
 import com.tartantransporttracker.models.Route;
 import com.tartantransporttracker.ui.busStop.BusStopView;
 import com.firebase.ui.auth.AuthUI;
@@ -23,6 +24,7 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.material.snackbar.Snackbar;
 import com.tartantransporttracker.databinding.ActivityMainBinding;
 import com.tartantransporttracker.managers.UserManager;
+import com.tartantransporttracker.ui.route.AdminViewRoute;
 
 import java.util.Arrays;
 import java.util.List;
@@ -168,8 +170,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding>  {
     private void startMapActivity(){
         Intent intent = new Intent(this,MapActivity.class);
         startActivity(intent);
-//        Intent intent1 = new Intent(this, BusStopView.class);
-//        startActivity(intent1);
     }
 
 //    private void updateLoginButton(){

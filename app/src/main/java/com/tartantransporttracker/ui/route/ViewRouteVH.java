@@ -18,10 +18,13 @@ class ViewRouteVH extends RecyclerView.ViewHolder {
     public ViewRouteAdapter viewRouteAdapter;
     private RouteManager routeManager = RouteManager.getInstance();
     TextView routeName;
+    TextView fromVenue;
 
     public ViewRouteVH(@NonNull View itemView) {
         super(itemView);
         routeName = itemView.findViewById(R.id.textView6);
+        fromVenue = itemView.findViewById(R.id.fromVenue);
+
         itemView.findViewById(R.id.deleteBtn).setOnClickListener(view ->
         {
             Route thisRoute = null;
@@ -33,6 +36,19 @@ class ViewRouteVH extends RecyclerView.ViewHolder {
                 }
             }
             confirmRouteDeletion(itemView, thisRoute.getId());
+        });
+        fromVenue.setOnClickListener(view -> {
+            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+
+            alert.setTitle("Bus Stops:");
+            if(fromVenue.getText().equals(""))
+            {
+                alert.setMessage("No bus stop found!");
+            }else
+            {
+                alert.setMessage(fromVenue.getText());
+            }
+            alert.show();
         });
     }
 

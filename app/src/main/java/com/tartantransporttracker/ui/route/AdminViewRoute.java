@@ -30,21 +30,29 @@ import com.google.android.material.navigation.NavigationView;
 import com.tartantransporttracker.BaseActivity;
 import com.tartantransporttracker.MainActivity;
 import com.tartantransporttracker.R;
+import com.tartantransporttracker.managers.BusStopManager;
 import com.tartantransporttracker.managers.RouteManager;
+import com.tartantransporttracker.managers.UserManager;
+import com.tartantransporttracker.models.BusStop;
 import com.tartantransporttracker.models.Route;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.tartantransporttracker.databinding.ActivityAdminViewRouteBinding;
-import com.tartantransporttracker.databinding.ActivityMainBinding;
+import com.tartantransporttracker.models.User;
+import com.tartantransporttracker.ui.busStop.BusStopAdapter;
 
 
 public class AdminViewRoute extends BaseActivity<ActivityAdminViewRouteBinding>{
 
     private AppBarConfiguration appBarConfiguration;
     private RouteManager routeManager = RouteManager.getInstance();
+    private BusStopManager busStopManager = BusStopManager.getInstance();
+    private UserManager user = UserManager.getInstance();
     private List<Route> routes = new ArrayList<>();
+    TextView busStopNum ;
+    TextView routesNum ;
 
     @Override
     public ActivityAdminViewRouteBinding getViewBinding() {
@@ -55,12 +63,35 @@ public class AdminViewRoute extends BaseActivity<ActivityAdminViewRouteBinding>{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_route);
+        busStopNum = findViewById(R.id.busStopNum);
+        routesNum = findViewById(R.id.routesNum);
         findAllRoute();
     }
-    private void findAllRoute()
+    public void showStatistic()
+    {
+        List<BusStop> bStops = new ArrayList<>();
+        busStopManager.findAllBusStops()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(!queryDocumentSnapshots.isEmpty()){
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                            for(DocumentSnapshot doc:list){
+                                BusStop route = doc.toObject(BusStop.class);
+                                bStops.add(route);
+                            }
+                            busStopNum.setText(String.valueOf(bStops.size()));
+                        }else{
+                            Log.w("Message:","No data found in the database");
+                        }
+                    }
+                });
+    }
+    public void findAllRoute()
     {
         RecyclerView recyclerView = findViewById(R.id.listOfRoute);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        showStatistic();
         routeManager.findAllRoutes().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -73,6 +104,8 @@ public class AdminViewRoute extends BaseActivity<ActivityAdminViewRouteBinding>{
                                 recyclerView.setAdapter(adapter);
                                 adapter.notifyItemInserted(routes.size() -1);
                             }
+                            routesNum.setText(String.valueOf(routes.size()));
+
                         }else{
                             Log.w("Message:","No data found in the database");
                         }
