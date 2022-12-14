@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.route.AdminViewRoute">
+
+
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/cmu"-->
+    <!--        android:minHeight="200dp"-->
+    <!--        android:theme="@style/Theme.TartanTransportTracker.AppBarOverlay">-->
+
+    <!--        &lt;!&ndash;        <androidx.appcompat.widget.Toolbar&ndash;&gt;-->
+    <!--        &lt;!&ndash;            android:id="@+id/toolbar"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            android:layout_width="398dp"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            android:background="?attr/colorPrimary"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            app:popupTheme="@style/Theme.TartanTransportTracker.PopupOverlay" />&ndash;&gt;-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="TTL"-->
+    <!--            android:layout_marginTop="30dp"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:textSize="18pt"-->
+    <!--            android:textColor="@color/white"-->
+    <!--             />-->
+
+    <!--        <com.google.android.material.button.MaterialButton-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_marginLeft="300dp"-->
+    <!--            android:background="none"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            app:icon="@android:drawable/ic_menu_view"-->
+    <!--            app:srcCompat="@android:drawable/bottom_bar" />-->
+
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
+    <View
+        android:id="@+id/dashboardTopView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/cmu" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="TTL"
+        android:textColor="@color/white"
+        android:textSize="18pt" />
+
+    <!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="300dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:background="@color/cmu"-->
+<!--        android:text="Menu"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20px"-->
+<!--        />-->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton"
+        android:layout_width="53dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/cmu"
+        android:textColor="@color/black"
+        app:icon="@drawable/icons_menu_rounded"
+        app:layout_anchor="@+id/materialButton"
+        app:layout_anchorGravity="end|center"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/dashboardTopCard"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/white"
+        android:minWidth="30dp"
+        android:minHeight="10dp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardCornerRadius="30dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bus"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="20dp"
+                            android:text="4"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Routes"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="20dp"
+                            android:text="5"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Student"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="20dp"
+                            android:text="290"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginRight="0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:padding="16.00dp"
+        android:scrollbars="none"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+
+            android:orientation="vertical">
+
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+            <include layout="@layout/user_item" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

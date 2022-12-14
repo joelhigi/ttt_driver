@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/view_routes"
+            android:title="@string/view_route"
+            android:icon="@drawable/view_route_icon"/>
+        <item
+            android:id="@+id/language_btn"
+            android:title="@string/change_language"
+            android:icon="@drawable/internet"
+            />
+        <item
+            android:id="@+id/logout_button"
+            android:title="@string/logout"
+            android:icon="@drawable/logout_icon"/>
+
+<!--        <item-->
+<!--            android:id="@+id/manageRoute"-->
+<!--            android:title="View route"-->
+<!--            android:icon="@drawable/view_route_icon"/>-->
+
+    </group>
+
+
+</menu>
