@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
+import com.tartantransporttracker.data.LoginRepository;
+import com.tartantransporttracker.data.Result;
+import com.tartantransporttracker.data.model.LoggedInUser;
 import com.tartantransporttracker.driver.R;
-import com.tartantransporttracker.driver.data.LoginRepository;
-import com.tartantransporttracker.driver.data.Result;
-import com.tartantransporttracker.driver.data.model.LoggedInUser;
 
 public class LoginViewModel extends ViewModel {
 

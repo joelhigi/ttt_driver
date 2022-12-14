@@ -16,7 +16,7 @@ import com.tartantransporttracker.driver.models.User;
 
 public class UserRepository {
     private static volatile  UserRepository instance;
-    private static final String COLLECTION_NAME="users";
+    private static  final String COLLECTION_NAME="users";
     private static final String USERNAME_FIELD="username";
     private static final String ROLE_FIELD="isMentor";
 
@@ -64,13 +64,13 @@ public class UserRepository {
             String username = user.getDisplayName();
             String uid = user.getUid();
 
-            User newUser = new User(uid,username, Role.DRIVER.toString(),urlPicture);
+            User newUser = new User(uid,username, Role.STUDENT.toString(),urlPicture);
 
             Task<DocumentSnapshot> userData = getUserData();
 
             userData.addOnSuccessListener(documentSnapshot -> {
                 if(documentSnapshot.contains(ROLE_FIELD)){
-                    newUser.setRole("Driver");
+                    newUser.setRole("Student");
                 }
                 this.getUsersCollection().document(uid).set(newUser);
             });

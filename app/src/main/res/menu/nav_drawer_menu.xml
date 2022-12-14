@@ -7,6 +7,10 @@
             android:title="@string/view_route"
             android:icon="@drawable/view_route_icon"/>
         <item
+            android:id="@+id/viewBusStop"
+            android:title="View Bus Stop"
+            android:icon="@drawable/search_view_background"/>
+        <item
             android:id="@+id/language_btn"
             android:title="@string/change_language"
             android:icon="@drawable/internet"

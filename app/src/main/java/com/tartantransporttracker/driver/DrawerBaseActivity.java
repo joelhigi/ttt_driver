@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tartantransporttracker.driver.managers.UserManager;
+import com.tartantransporttracker.driver.ui.busStop.BusStopView;
 import com.tartantransporttracker.driver.ui.route.AdminViewRoute;
 
 import java.util.Locale;
@@ -52,8 +53,13 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.view_routes:
-                Intent intent = new Intent(this, dashboard.class);
+                Intent intent = new Intent(this, AdminViewRoute.class);
                 startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+            case R.id.viewBusStop:
+                Intent intent1 = new Intent(this, BusStopView.class);
+                startActivity(intent1);
                 overridePendingTransition(0,0);
                 break;
 //

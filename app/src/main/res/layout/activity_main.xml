@@ -97,6 +97,20 @@
             tools:ignore="MissingConstraints" />
 
 <!--        <Button-->
+<!--            android:id="@+id/loginBtn"-->
+<!--            android:text="Login"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="80dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!--        <Button-->
 <!--            android:id="@+id/goToLogin"-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->

@@ -27,7 +27,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.route.CreateBusStopActivity"
+            android:name=".dashboard"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.busStop.CreateBusStopActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.busStop.BusStopView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

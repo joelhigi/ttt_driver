@@ -1,7 +1,4 @@
-package com.tartantransporttracker.driver.ui.route;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.tartantransporttracker.driver.ui.busStop;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,28 +6,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.driver.DrawerBaseActivity;
 import com.tartantransporttracker.driver.R;
-import com.tartantransporttracker.driver.databinding.ActivityCreateBusStopBinding;
 import com.tartantransporttracker.driver.managers.BusStopManager;
 import com.tartantransporttracker.driver.managers.RouteManager;
 import com.tartantransporttracker.driver.models.BusStop;
 import com.tartantransporttracker.driver.models.Route;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class CreateBusStopActivity extends DrawerBaseActivity {
 
@@ -42,17 +36,19 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
     private BusStopManager busStopManager;
     private RouteManager routeManager;
     private Route selectedRoute = new Route();
-    ActivityCreateBusStopBinding activityCreateBusStopBinding;
+    private String busStopId;
+    private BusStop busStop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityCreateBusStopBinding = activityCreateBusStopBinding.inflate(getLayoutInflater());
-        setContentView(activityCreateBusStopBinding.getRoot());
-        nameActivityTitle("Create Bus Stop");
+        setContentView(R.layout.activity_create_bus_stop);
 
         busStopManager = new BusStopManager();
         routeManager = new RouteManager();
+
+        Intent intent = getIntent();
+//        busStopId = intent.getStringExtra("id");
 
         edt_address = findViewById(R.id.edtAddress);
         edt_position = findViewById(R.id.edtPosition);
@@ -60,15 +56,24 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
         spinner = findViewById(R.id.selectRouteSpinner);
 
         items = new ArrayList<>();
-
+        busStop = (BusStop) intent.getParcelableExtra("id");
+        if (busStop != null) {
+            btnCreateBusStop.setText("Update Bus Stop");
+            ArrayList<String> selectedBusStopNames = new ArrayList<>();
+            selectedBusStopNames.add(busStop.getBusStopName());
+            ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, selectedBusStopNames);
+            adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+            spinner.setAdapter(adapter);
+            edt_address.setText(busStop.getBusStopName());
+            edt_position.setText(String.valueOf(busStop.getPosition()));
+        }
         setUpRoutesSpinner();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Route route = (Route) parent.getItemAtPosition(position);
-                if (route != null)
-                {
+                if (route != null) {
                     selectedRoute = route;
                 }
             }
@@ -78,23 +83,27 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
                 Log.e("SPINNER", "Nothing selected");
             }
         });
-
         btnCreateBusStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String address = edt_address.getText().toString();
                 Integer position = Integer.parseInt(edt_position.getText().toString());
-
-                BusStop busStop = new BusStop(address, selectedRoute, position);
-                busStopManager.createBusStop(busStop);
-
-                Toast.makeText(CreateBusStopActivity.this, "Bus stop created", Toast.LENGTH_SHORT).show();
+                BusStop busStopObj = new BusStop(address, selectedRoute, position);
+                if (busStop != null) {
+                    busStopObj.setRoute(busStop.getRoute());
+                    busStopManager.updateBusStop(busStop.getId(), busStopObj);
+                    Toast.makeText(CreateBusStopActivity.this, "Bus stop updated successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    busStopManager.createBusStop(busStopObj);
+                    Toast.makeText(CreateBusStopActivity.this, "Bus stop created", Toast.LENGTH_SHORT).show();
+                }
+                Intent intent = new Intent(getApplicationContext(), BusStopView.class);
+                startActivity(intent);
             }
         });
     }
 
-    private void setUpRoutesSpinner()
-    {
+    private void setUpRoutesSpinner() {
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, items);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         spinner.setAdapter(adapter);
@@ -102,8 +111,7 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
         routeManager.findAllRoutes().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Route route = document.toObject(Route.class);
                         items.add(route);
@@ -114,15 +122,13 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
         });
     }
 
-    private ArrayList<Route> getAvailableRoutes()
-    {
+    private ArrayList<Route> getAvailableRoutes() {
         ArrayList<Route> allRoutes = new ArrayList<>();
         routeManager.findAllRoutes().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Route route = document.toObject(Route.class);
                                 items.add(route);

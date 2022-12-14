@@ -1,7 +1,8 @@
 package com.tartantransporttracker.driver.ui.route;
 
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,34 +13,33 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.driver.DrawerBaseActivity;
 import com.tartantransporttracker.driver.R;
 import com.tartantransporttracker.driver.databinding.ActivityCreateRouteBinding;
-import com.tartantransporttracker.driver.managers.RouteManager;
 import com.tartantransporttracker.driver.models.Route;
+import com.tartantransporttracker.driver.ui.busStop.CreateBusStopActivity;
+import com.tartantransporttracker.driver.managers.RouteManager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class CreateRouteActivity extends DrawerBaseActivity {
 
-    Button btnAddRoute;
-    Button btnViewStops;
-    EditText routeName;
-    RouteManager routeManager;
+    private Button btnAddRoute;
+    private Button btnViewStops;
+    private EditText routeName;
+    private RouteManager routeManager;
+    private ActivityCreateRouteBinding activityCreateRouteBinding;
 
-    ActivityCreateRouteBinding activityCreateRouteBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityCreateRouteBinding = activityCreateRouteBinding.inflate(getLayoutInflater());
+        activityCreateRouteBinding = ActivityCreateRouteBinding.inflate(getLayoutInflater());
         setContentView(activityCreateRouteBinding.getRoot());
-        nameActivityTitle("Create Route");
+        nameActivityTitle(getString(R.string.create_route));
 
         routeManager = new RouteManager();
 

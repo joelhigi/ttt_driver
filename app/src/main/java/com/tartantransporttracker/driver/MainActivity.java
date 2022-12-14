@@ -19,6 +19,8 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.material.snackbar.Snackbar;
 import com.tartantransporttracker.driver.databinding.ActivityMainBinding;
 import com.tartantransporttracker.driver.managers.UserManager;
+import com.tartantransporttracker.driver.ui.login.LoginViewModel;
+
 import java.util.Arrays;
 import java.util.List;
 

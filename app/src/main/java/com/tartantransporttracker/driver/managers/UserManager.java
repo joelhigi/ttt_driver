@@ -4,7 +4,7 @@ package com.tartantransporttracker.driver.managers;
 import android.content.Context;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseUser;;
+import com.google.firebase.auth.FirebaseUser;
 import com.tartantransporttracker.driver.models.User;
 import com.tartantransporttracker.driver.repository.UserRepository;
 

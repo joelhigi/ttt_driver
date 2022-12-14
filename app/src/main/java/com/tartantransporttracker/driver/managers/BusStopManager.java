@@ -1,11 +1,10 @@
 package com.tartantransporttracker.driver.managers;
 
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.driver.models.BusStop;
 import com.tartantransporttracker.driver.repository.BusRepository;
 import com.tartantransporttracker.driver.repository.UserRepository;
-
-import java.util.List;
 
 public class BusStopManager {
     private static volatile BusStopManager instance;
@@ -32,7 +31,7 @@ public class BusStopManager {
         busRepository.createBusStop(busStop);
     }
 
-    public List<BusStop> findAllBusStops(){
+    public Task<QuerySnapshot> findAllBusStops(){
         return busRepository.findAll();
     }
 

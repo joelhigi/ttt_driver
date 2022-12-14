@@ -18,4 +18,9 @@
     <string name="button_login_text_not_logged">Connexion</string>
     <string name="change_language">Langue</string>
     <string name="notification_title">Vous avez reçu une notification</string>
+
+    <string name="route_name_label" translatable="false">Route Name</string>
+    <string name="create_route">créer un itinéraire</string>
+    <string name="update_route">mettre à jour l\'itinéraire</string>
+    <string name="create_busStop">créer un arrêt de bus</string>
 </resources>
