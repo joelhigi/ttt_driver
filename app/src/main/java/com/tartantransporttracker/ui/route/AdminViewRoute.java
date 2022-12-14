@@ -12,11 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
@@ -46,6 +48,7 @@ import com.tartantransporttracker.models.Route;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import com.tartantransporttracker.databinding.ActivityAdminViewRouteBinding;
 import com.tartantransporttracker.models.User;
@@ -64,8 +67,11 @@ public class AdminViewRoute extends DrawerBaseActivity{
     private List<Route> routes = new ArrayList<>();
     TextView busStopNum ;
     TextView routesNum ;
+    ViewRouteAdapter adapter;
     RecyclerView recyclerView;
+    SearchView searchRouteBtn;
     FloatingActionButton addRoute;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,15 +84,46 @@ public class AdminViewRoute extends DrawerBaseActivity{
         routesNum = findViewById(R.id.routesNum);
         recyclerView = findViewById(R.id.listOfRoute);
         addRoute = findViewById(R.id.addRoute);
+        searchRouteBtn = findViewById(R.id.searchView);
 
         getLayoutInflater().inflate(R.layout.activity_drawer_base, null).getVisibility();
         addRoute.setOnClickListener(view -> {
             Intent intent = new Intent(this, CreateRouteActivity.class);
             startActivity(intent);
         });
+        searchRouteBtn.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterRoutes(newText);
+                return false;
+            }
+        });
 
         findAllRoute();
     }
+
+    private void filterRoutes(String searchText) {
+        List<Route> filteredRoutes = new ArrayList<>();
+        for(Route route : routes)
+        {
+            if(route.getName().toLowerCase(Locale.ROOT).contains(searchText.toLowerCase(Locale.ROOT))){
+                filteredRoutes.add(route);
+            }
+        }
+        if(filteredRoutes.isEmpty())
+        {
+            Toast.makeText(getApplicationContext(), "No routes found!!", Toast.LENGTH_SHORT).show();
+        }else{
+            adapter.filterRoutes(filteredRoutes);
+        }
+
+    }
+
     public void showStatistic()
     {
         List<BusStop> bStops = new ArrayList<>();
@@ -102,7 +139,7 @@ public class AdminViewRoute extends DrawerBaseActivity{
                             }
                             busStopNum.setText(String.valueOf(bStops.size()));
                         }else{
-                            Log.w("Message:","No data found in the database");
+
                         }
                     }
                 });
@@ -119,7 +156,7 @@ public class AdminViewRoute extends DrawerBaseActivity{
                             for(DocumentSnapshot doc:list){
                                 Route route = doc.toObject(Route.class);
                                 routes.add(route);
-                                ViewRouteAdapter adapter = new ViewRouteAdapter(routes);
+                                adapter = new ViewRouteAdapter(routes);
                                 recyclerView.setAdapter(adapter);
                                 adapter.notifyItemInserted(routes.size() -1);
                             }

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,14 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.core.view.GravityCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.managers.RouteManager;
-import com.tartantransporttracker.models.BusStop;
 import com.tartantransporttracker.models.Route;
 import com.tartantransporttracker.ui.busStop.BusStopView;
 import com.firebase.ui.auth.AuthUI;
@@ -29,11 +22,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tartantransporttracker.databinding.ActivityMainBinding;
 import com.tartantransporttracker.managers.UserManager;
 import com.tartantransporttracker.ui.route.AdminViewRoute;
-import com.tartantransporttracker.ui.route.CreateBusStopActivity;
-import com.tartantransporttracker.ui.route.CreateRouteActivity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -174,7 +163,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     private void startMapActivity() {
-        Intent intent = new Intent(this, BusStopView.class);
+        Intent intent = new Intent(this, AdminViewRoute.class);
         startActivity(intent);
     }
 

@@ -28,6 +28,12 @@ public class ViewRouteAdapter extends RecyclerView.Adapter<ViewRouteVH> {
         this.routes = routeItem;
     }
 
+    public void filterRoutes(List<Route> newRoutes)
+    {
+        routes = newRoutes;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewRouteVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -1,10 +1,8 @@
 package com.tartantransporttracker.ui.busStop;
 
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +17,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.R;
 import com.tartantransporttracker.managers.BusStopManager;
 import com.tartantransporttracker.models.BusStop;
-import com.tartantransporttracker.ui.route.CreateBusStopActivity;
-import com.tartantransporttracker.ui.route.CreateRouteActivity;
-import com.tartantransporttracker.ui.route.ViewRouteAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.route.AdminViewRoute"
-    tools:openDrawer="start"
-    android:fitsSystemWindows="true">
+    tools:openDrawer="start">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -51,22 +51,27 @@
             android:background="@color/white"
             android:minWidth="30dp"
             android:minHeight="10dp"
-            app:cardBackgroundColor="@color/cardview_light_background"
             app:cardCornerRadius="30dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/searchView"
+                app:layout_constraintTop_toBottomOf="@+id/searchView">
 
                 <TableLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/tableLayout"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center">
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:orientation="vertical">
 
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:gravity="center">
 
                         <LinearLayout
@@ -92,8 +97,9 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="120dp"
+                            android:layout_width="130dp"
                             android:layout_height="match_parent"
+                            android:layout_marginRight="30dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -114,7 +120,24 @@
                         </LinearLayout>
 
                     </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:minWidth="40dp">
+
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/searchView"
+                            android:layout_width="220dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/search_view_background"
+                            app:iconifiedByDefault="false"
+                            app:queryHint="Search Route" />
+                    </TableRow>
                 </TableLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -130,33 +153,12 @@
             android:padding="16.00dp"
             android:scrollbars="none"
             app:cardCornerRadius="30dp">
-
-            <!--        <LinearLayout-->
-            <!--            android:id="@+id/listOfRoute"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:background="@color/white"-->
-            <!--            android:orientation="vertical">-->
-
-            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-            <!--&lt;!&ndash;            <include layout="@layout/route_item" />&ndash;&gt;-->
-
-            <!--        </LinearLayout>-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listOfRoute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -1,7 +1,6 @@
 package com.tartantransporttracker.ui.route;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,16 +11,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.DrawerBaseActivity;
 import com.tartantransporttracker.R;
-import com.tartantransporttracker.databinding.ActivityCreateRouteBinding;
 import com.tartantransporttracker.managers.RouteManager;
 import com.tartantransporttracker.models.Route;
+import com.tartantransporttracker.ui.busStop.CreateBusStopActivity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
