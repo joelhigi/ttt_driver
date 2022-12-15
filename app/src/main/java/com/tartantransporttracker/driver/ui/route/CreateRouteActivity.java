@@ -55,17 +55,24 @@ public class CreateRouteActivity extends DrawerBaseActivity {
 
                 Boolean routeExists = routeExists(name);
                 if (!routeExists) {
-                    Route route = new Route(name);
-                    routeManager.createRoute(route);
+                    if(!name.isEmpty())
+                    {
+                        Route route = new Route(name);
+                        routeManager.createRoute(route);
 
-                    routeName.setText("");
-                    routeName.clearFocus();
+                        routeName.setText("");
+                        routeName.clearFocus();
 
-                    Toast.makeText(getApplicationContext(), "Route created", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), AdminViewRoute.class);
-                    startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Route created", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), AdminViewRoute.class);
+                        startActivity(intent);
+                    }else
+                    {
+                        Toast.makeText(getApplicationContext(), "Route name is empty!", Toast.LENGTH_LONG).show();
+                    }
+
                 } else {
-
+                    Toast.makeText(getApplicationContext(), "Route already exist", Toast.LENGTH_LONG).show();
                 }
             }
         });

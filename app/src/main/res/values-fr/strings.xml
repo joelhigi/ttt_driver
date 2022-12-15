@@ -23,4 +23,6 @@
     <string name="create_route">créer un itinéraire</string>
     <string name="update_route">mettre à jour l\'itinéraire</string>
     <string name="create_busStop">créer un arrêt de bus</string>
+    <string name="view_bus_stop_title">Liste des arrêts de bus</string>
+    <string name="update_bus_stop_title">mettre à jour l\'arrêt de bus</string>
 </resources>

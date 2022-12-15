@@ -19,6 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tartantransporttracker.driver.DrawerBaseActivity;
 import com.tartantransporttracker.driver.R;
+import com.tartantransporttracker.driver.databinding.ActivityCreateRouteBinding;
 import com.tartantransporttracker.driver.managers.BusStopManager;
 import com.tartantransporttracker.driver.managers.RouteManager;
 import com.tartantransporttracker.driver.models.BusStop;
@@ -38,14 +39,17 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
     private Route selectedRoute = new Route();
     private String busStopId;
     private BusStop busStop;
+    private ActivityCreateRouteBinding activityCreateRouteBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_bus_stop);
-
+        activityCreateRouteBinding = ActivityCreateRouteBinding.inflate(getLayoutInflater());
+        setContentView(activityCreateRouteBinding.getRoot());
+        nameActivityTitle(getString(R.string.create_busStop));
         busStopManager = new BusStopManager();
         routeManager = new RouteManager();
+
 
         Intent intent = getIntent();
 //        busStopId = intent.getStringExtra("id");
@@ -58,6 +62,7 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
         items = new ArrayList<>();
         busStop = (BusStop) intent.getParcelableExtra("id");
         if (busStop != null) {
+            nameActivityTitle(getString(R.string.update_bus_stop_title));
             btnCreateBusStop.setText("Update Bus Stop");
             ArrayList<String> selectedBusStopNames = new ArrayList<>();
             selectedBusStopNames.add(busStop.getBusStopName());

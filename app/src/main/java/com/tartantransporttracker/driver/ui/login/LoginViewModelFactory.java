@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.tartantransporttracker.data.LoginDataSource;
-import com.tartantransporttracker.data.LoginRepository;
+import com.tartantransporttracker.driver.data.LoginDataSource;
+import com.tartantransporttracker.driver.data.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

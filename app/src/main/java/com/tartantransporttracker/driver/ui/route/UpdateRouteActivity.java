@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.tartantransporttracker.driver.DrawerBaseActivity;
 import com.tartantransporttracker.driver.R;
 import com.tartantransporttracker.driver.databinding.ActivityCreateRouteBinding;
 import com.tartantransporttracker.driver.databinding.ActivityUpdateRouteBinding;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class UpdateRouteActivity extends AppCompatActivity {
+public class UpdateRouteActivity extends DrawerBaseActivity {
 
     private Button updateBtn;
     private EditText edtName;
@@ -74,9 +75,6 @@ public class UpdateRouteActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void nameActivityTitle(String string) {
     }
 
     public void findAllRoutes()

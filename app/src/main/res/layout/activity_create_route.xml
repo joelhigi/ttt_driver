@@ -11,7 +11,7 @@
         android:id="@+id/dashboardTopView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/cmu" />
+        android:background="@color/white" />
 
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->

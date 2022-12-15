@@ -35,7 +35,7 @@ public class BusStopView extends DrawerBaseActivity {
         super.onCreate(savedInstanceState);
         activityBusStopBinding = ActivityBusStopBinding.inflate(getLayoutInflater());
         setContentView(activityBusStopBinding.getRoot());
-        nameActivityTitle(getString(R.string.create_busStop));
+        nameActivityTitle(getString(R.string.view_bus_stop_title));
         busStopNum = findViewById(R.id.numberOfBusStops);
         busStopBtn = findViewById(R.id.busStopBtn);
         if(!populateBusStopList())

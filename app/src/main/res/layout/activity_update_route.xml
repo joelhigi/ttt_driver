@@ -11,30 +11,7 @@
         android:id="@+id/dashboardTopView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/cmu" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:text="TTL"
-        android:textColor="@color/white"
-        android:textSize="18pt" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
-        android:layout_width="53dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="@color/cmu"
-        android:textColor="@color/black"
-        app:icon="@drawable/icons_menu_rounded"
-        app:layout_anchor="@+id/materialButton"
-        app:layout_anchorGravity="end|center"
-        app:srcCompat="@android:drawable/ic_menu_view"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:background="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
