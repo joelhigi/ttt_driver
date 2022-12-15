@@ -1,5 +1,6 @@
 package com.tartantransporttracker.driver.models;
 
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentId;
 
 import java.util.List;
@@ -8,6 +9,7 @@ public class Route {
     @DocumentId
     private String id;
     private String name;
+    private Timestamp ts;
 
     private List<User> students;
 
@@ -41,6 +43,14 @@ public class Route {
 
     public void setStudents(List<User> _users) {
         students = _users;
+    }
+
+    public Timestamp getTs() {
+        return ts;
+    }
+
+    public void setTs(Timestamp newTS) {
+        newTS = ts;
     }
 
     @Override
