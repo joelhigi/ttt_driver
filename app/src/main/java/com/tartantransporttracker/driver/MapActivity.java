@@ -16,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -54,7 +55,9 @@ public class MapActivity extends DrawerBaseActivity {
     private String userRole;
     private String[] routes;
     private ArrayList<String> receivedString = new ArrayList<>();
+    private ArrayList<String> receivedID = new ArrayList<>();
     private String chosenRoute;
+    private String chosenRouteID;
     private String refAddress;
     private Double latitude;
     private Double longitude;
@@ -115,13 +118,18 @@ public class MapActivity extends DrawerBaseActivity {
                             List<DocumentSnapshot> docs = routeQ.getDocuments();
                             for(DocumentSnapshot d:docs)
                             {
-                                Log.e("Snapp",""+d.get("name").toString());
+
                                 receivedString.add(d.get("name").toString());
                             }
 
+
                             routes = new String[receivedString.size()];
                             for (int i = 0; i < receivedString.size(); i++)
+                            {
                                 routes[i] = receivedString.get(i);
+                                receivedID.add(routeQ.getDocuments().get(i).getId());
+                            }
+
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity.this);
                             builder.setTitle("Pick a Route");
@@ -129,6 +137,9 @@ public class MapActivity extends DrawerBaseActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int choice) {
                                     chosenRoute = routes[choice];
+                                    chosenRouteID = receivedID.get(choice);
+                                    DocumentReference notify = tttFireStore.collection("routes").document(chosenRouteID);
+                                    notify.update("time",Timestamp.now());
 
                                     Intent intent = new Intent(getBaseContext(), LocationSharingService.class);
                                     intent.putExtra("userRole",userRole);
@@ -152,13 +163,14 @@ public class MapActivity extends DrawerBaseActivity {
                                                 if (shareStatus) {
                                                     latitude = snapshot.child("latitude").getValue(Double.class);
                                                     longitude = snapshot.child("longitude").getValue(Double.class);
+                                                    FragmentManager fragManager = getSupportFragmentManager();
+                                                    FragmentTransaction fragSwitch = fragManager.beginTransaction();
+                                                    FragmentContainerView fragContainer = findViewById(R.id.fragmentContainerView);
+                                                    fragContainer.removeAllViews();
+                                                    fragSwitch.replace(R.id.fragmentContainerView, new DriverMapFragment(latitude,longitude));
+                                                    fragSwitch.commit();
                                                 }
-                                                FragmentManager fragManager = getSupportFragmentManager();
-                                                FragmentTransaction fragSwitch = fragManager.beginTransaction();
-                                                FragmentContainerView fragContainer = findViewById(R.id.fragmentContainerView);
-                                                fragContainer.removeAllViews();
-                                                fragSwitch.replace(R.id.fragmentContainerView, new DriverMapFragment(latitude,longitude));
-                                                fragSwitch.commit();
+
                                             }
 
                                         }
