@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
     private Route selectedRoute = new Route();
     private String busStopId;
     private BusStop busStop;
+    private TextView managebusStop;
     private ActivityCreateRouteBinding activityCreateRouteBinding;
 
     @Override
@@ -46,6 +48,7 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
         super.onCreate(savedInstanceState);
         activityCreateRouteBinding = ActivityCreateRouteBinding.inflate(getLayoutInflater());
         setContentView(activityCreateRouteBinding.getRoot());
+        setContentView(R.layout.activity_create_bus_stop);
         nameActivityTitle(getString(R.string.create_busStop));
         busStopManager = new BusStopManager();
         routeManager = new RouteManager();
@@ -57,13 +60,16 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
         edt_address = findViewById(R.id.edtAddress);
         edt_position = findViewById(R.id.edtPosition);
         btnCreateBusStop = findViewById(R.id.btn_add_bus_stop);
+        managebusStop = findViewById(R.id.manage_bus_stop);
         spinner = findViewById(R.id.selectRouteSpinner);
 
         items = new ArrayList<>();
         busStop = (BusStop) intent.getParcelableExtra("id");
+        managebusStop.setText("Create Bus Stop");
         if (busStop != null) {
             nameActivityTitle(getString(R.string.update_bus_stop_title));
             btnCreateBusStop.setText("Update Bus Stop");
+            managebusStop.setText("Update Bus Stop");
             ArrayList<String> selectedBusStopNames = new ArrayList<>();
             selectedBusStopNames.add(busStop.getBusStopName());
             ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, selectedBusStopNames);
@@ -111,6 +117,7 @@ public class CreateBusStopActivity extends DrawerBaseActivity {
     private void setUpRoutesSpinner() {
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, items);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
         spinner.setAdapter(adapter);
 
         routeManager.findAllRoutes().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

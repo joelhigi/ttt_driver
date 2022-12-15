@@ -61,8 +61,6 @@ public abstract class BaseActivity<T extends ViewBinding> extends AppCompatActiv
             case R.id.language_btn:
                 showChangeLanguageDialog();
                 break;
-
-
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

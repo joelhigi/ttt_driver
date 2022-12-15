@@ -1,5 +1,6 @@
 package com.tartantransporttracker.driver.ui.route;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -55,7 +56,7 @@ public class AdminViewRoute extends DrawerBaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityAdminViewRouteBinding = ActivityAdminViewRouteBinding.inflate(getLayoutInflater());
-        setContentView(activityAdminViewRouteBinding.getRoot());
+//        setContentView(activityAdminViewRouteBinding.getRoot());
         setContentView(R.layout.activity_view_route);
         nameActivityTitle("Manage Routes");
         busStopNum = findViewById(R.id.busStopNum);

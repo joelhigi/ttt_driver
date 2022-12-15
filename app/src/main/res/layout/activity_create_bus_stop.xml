@@ -5,42 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    tools:viewBindingIgnore="true"
     tools:context=".ui.busStop.CreateBusStopActivity">
 
     <View
         android:id="@+id/dashboardTopView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/white" />
+        android:layout_height="60dp"
+        android:background="@color/cmu">
+    </View>
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:text="TTL"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="18pt" />-->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/materialButton"-->
-<!--        android:layout_width="53dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="300dp"-->
-<!--        android:layout_marginTop="35dp"-->
-<!--        android:backgroundTint="@color/cmu"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:icon="@drawable/icons_menu_rounded"-->
-<!--        app:layout_anchor="@+id/materialButton"-->
-<!--        app:layout_anchorGravity="end|center"-->
-<!--        app:srcCompat="@android:drawable/ic_menu_view"-->
-<!--        tools:ignore="SpeakableTextPresentCheck" />-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center_vertical"
+        android:orientation="vertical"
         android:padding="10dp">
 
         <Spinner
@@ -48,19 +41,19 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dialog"
-            android:layout_marginTop="64dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="64dp"
             android:layout_marginRight="30dp"
-            android:inputType="none" />
+            android:inputType="none"
+            android:spinnerMode="dialog" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/cmu"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/cmu"
             android:hint="@string/bus_stop_address">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -73,17 +66,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/cmu"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/cmu"
             android:hint="@string/bus_stop_position">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPosition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,4 +90,28 @@
             android:backgroundTint="@color/cmu_200"
             android:text="@string/create_bus_stop" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/manage_bus_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
+        android:text="Manage bus stop"
+        android:textColor="@color/white"
+        android:textSize="10pt"
+        app:layout_anchor="@+id/dashboardTopView"
+        app:layout_anchorGravity="center" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton"
+        android:layout_width="53dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/cmu"
+        android:textColor="@color/black"
+        app:icon="@drawable/icons_menu_rounded"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="end|center"
+        app:srcCompat="@android:drawable/ic_menu_view"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

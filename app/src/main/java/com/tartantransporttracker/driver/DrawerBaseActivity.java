@@ -27,7 +27,7 @@ import java.util.Locale;
 
 public class DrawerBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
     private UserManager userManager = UserManager.getInstance();
 
     @Override
