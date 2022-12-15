@@ -1,5 +1,12 @@
-package com.tartantransporttracker.driver.models;
+/*
+ * Route Model which stores the route information
+ * by Didier Ngabo*/
 
+package com.tartantransporttracker.driver.models;
+/*
+ * A class that acts as the model for all routes.
+ * by Didier
+ * */
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentId;
 

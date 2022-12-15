@@ -1,5 +1,12 @@
-package com.tartantransporttracker.driver.models;
+/*
+ * User Model which stores the driver information
+ * by Didier Ngabo*/
 
+package com.tartantransporttracker.driver.models;
+/*
+ * A class that acts as the model for all Users.
+ * by Didier
+ * */
 import androidx.annotation.Nullable;
 
 public class User {

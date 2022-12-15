@@ -1,3 +1,6 @@
+/*
+ * the class which acts as the middle where between busStop Repository and the UI
+ * by Didier Ngabo*/
 package com.tartantransporttracker.driver.managers;
 
 import com.google.android.gms.tasks.Task;

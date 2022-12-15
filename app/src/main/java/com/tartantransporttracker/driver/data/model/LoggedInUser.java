@@ -2,6 +2,7 @@ package com.tartantransporttracker.driver.data.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
+ * written by Didier
  */
 public class LoggedInUser {
 

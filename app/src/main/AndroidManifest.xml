@@ -27,6 +27,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name="com.tartantransporttracker.driver.dashboard"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.route.CreateBusStopActivity"
             android:exported="false">
             <meta-data

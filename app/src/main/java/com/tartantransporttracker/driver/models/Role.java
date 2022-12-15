@@ -1,5 +1,8 @@
 package com.tartantransporttracker.driver.models;
-
+/*
+ * A class that acts as the model for all journeys.
+ * by Didier
+ * */
 public enum Role {
     UNKNOWN("Unkown"),
     STUDENT("Student"),

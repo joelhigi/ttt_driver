@@ -1,5 +1,7 @@
 package com.tartantransporttracker.driver.repository;
-
+/*
+ * Class that functions as the repository for the routes
+ * by Didier & Joel*/
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;

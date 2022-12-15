@@ -1,5 +1,7 @@
 package com.tartantransporttracker.driver.repository;
-
+/*
+ * Class that functions as the repository for the users
+ * by Didier*/
 import android.content.Context;
 
 import androidx.annotation.Nullable;

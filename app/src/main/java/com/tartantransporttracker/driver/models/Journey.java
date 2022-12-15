@@ -1,5 +1,8 @@
 package com.tartantransporttracker.driver.models;
-
+/*
+ * A class that acts as the model for all journeys. Crucial for live location updates
+ * by Joel & Edgar
+ * */
 public class Journey {
     private String driverID;
     private String driverName;

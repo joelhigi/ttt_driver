@@ -7,7 +7,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;;
 import com.tartantransporttracker.driver.models.User;
 import com.tartantransporttracker.driver.repository.UserRepository;
-
+/*
+ * the class which acts as the middle where between user Repository and the UI
+ * by Didier Ngabo*/
 public class UserManager {
     private static volatile UserManager instance;
     private UserRepository userRepo;

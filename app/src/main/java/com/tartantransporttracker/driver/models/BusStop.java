@@ -1,3 +1,6 @@
+/*
+ * BusStop Model which stores the bus stop information
+ * by Didier Ngabo*/
 package com.tartantransporttracker.driver.models;
 
 import com.google.firebase.firestore.DocumentId;
