@@ -29,7 +29,6 @@ import java.util.List;
 public class CreateRouteActivity extends DrawerBaseActivity {
 
     private Button btnAddRoute;
-    private Button btnViewStops;
     private EditText routeName;
     private RouteManager routeManager;
     private ActivityCreateRouteBinding activityCreateRouteBinding;
@@ -44,7 +43,6 @@ public class CreateRouteActivity extends DrawerBaseActivity {
         routeManager = new RouteManager();
 
         btnAddRoute = (Button) findViewById(R.id.createRouteBtn);
-        btnViewStops = findViewById(R.id.viewStops);
 
         routeName = findViewById(R.id.route_name);
 
@@ -74,14 +72,6 @@ public class CreateRouteActivity extends DrawerBaseActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Route already exist", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
-
-        btnViewStops.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CreateBusStopActivity.class);
-                startActivity(intent);
             }
         });
     }
